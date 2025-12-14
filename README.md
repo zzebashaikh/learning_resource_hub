@@ -170,35 +170,6 @@ The API uses JWT (JSON Web Tokens) for authentication:
 - Clean, modular architecture
 - Comprehensive error handling
 
-## Notes for Viva
-
-### Architecture Explanation:
-1. **Modular Structure:** Separated concerns (models, controllers, routes, middleware)
-2. **MVC Pattern:** Models (data), Views (API responses), Controllers (business logic)
-3. **Middleware:** Authentication and authorization checks
-4. **Database:** MongoDB with Mongoose ODM for schema validation
-
-### Security Features:
-- Password hashing with bcrypt
-- JWT token-based authentication
-- Role-based access control
-- Input validation and sanitization
-
-### Database Design:
-- User and Resource collections with proper relationships
-- Embedded ratings array in Resource model
-- References for bookmarks and likes
-
-## Next Steps (Frontend)
-
-The frontend will be built using:
-- React with functional components and hooks
-- React Router for navigation
-- Axios for API calls
-- Context API for state management
-- Dark mode support
-- Responsive design
-
 ---
 
 **Status:** Backend Complete | Frontend Pending
