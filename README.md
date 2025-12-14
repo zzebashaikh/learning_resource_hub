@@ -4,18 +4,21 @@ A complete MERN stack application for sharing and managing learning resources. B
 
 ## Project Overview
 
-Learning Resource Hub is a platform where users can:
-- Register and login securely using JWT authentication
-- Share learning resources (articles, tutorials, courses, etc.)
-- Search and filter resources by category
-- Like and bookmark favorite resources
-- Rate resources (1-5 stars)
-- Manage their own resources (edit/delete)
-- Access a personal dashboard
+Learning Resource Hub is a comprehensive MERN stack application designed for sharing and managing educational content. The platform enables users to discover, organize, and interact with learning resources in a collaborative environment.
 
-**Admin Features:**
-- View all users
-- Delete any resource
+### User Features
+- Secure user registration and authentication using JWT
+- Share learning resources (articles, tutorials, courses, documentation, etc.)
+- Advanced search and filtering by category
+- Like and bookmark favorite resources
+- Rate resources with a 1-5 star rating system
+- Manage personal resources (create, edit, delete)
+- Access personalized dashboard with user statistics
+
+### Admin Features
+- View all registered users
+- Delete any resource (moderation capabilities)
+- Full administrative access to platform resources
 
 ## Architecture
 
@@ -69,7 +72,7 @@ backend/
 - `createdAt`: Timestamp
 - `updatedAt`: Timestamp
 
-##  Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 - Node.js (v14 or higher)
@@ -155,41 +158,66 @@ The API uses JWT (JSON Web Tokens) for authentication:
    Authorization: Bearer <your_jwt_token>
    ```
 
-## Features Implemented
+## Key Features
 
-- User registration and login (JWT)
-- Role-based access control (Admin vs Learner)
-- CRUD operations for resources
-- Search and filter resources
+### Authentication & Authorization
+- Secure user registration and login with JWT tokens
+- Role-based access control (Admin and Learner roles)
+- Protected API routes with middleware validation
+
+### Resource Management
+- Full CRUD operations for learning resources
+- Advanced search functionality across titles and descriptions
+- Category-based filtering
+- Sorting options (newest, oldest, rating, likes)
+- Pagination support for large datasets
+
+### User Engagement
 - Like/unlike resources
-- Bookmark resources
-- Rate resources (1-5 stars)
-- Personal dashboard (my resources)
-- Admin can view all users
-- Admin can delete any resource
-- Clean, modular architecture
-- Comprehensive error handling
+- Bookmark favorite resources for quick access
+- Rate resources with 1-5 star rating system
+- Average rating calculation and display
 
-## Notes for Viva
+### User Dashboard
+- Personal resource management
+- View all user-created resources
+- Access bookmarked resources
 
-### Architecture Explanation:
-1. **Modular Structure:** Separated concerns (models, controllers, routes, middleware)
-2. **MVC Pattern:** Models (data), Views (API responses), Controllers (business logic)
-3. **Middleware:** Authentication and authorization checks
-4. **Database:** MongoDB with Mongoose ODM for schema validation
+### Admin Capabilities
+- View all registered users
+- Delete any resource (moderation)
+- Administrative oversight of platform content
 
-### Security Features:
+### Technical Excellence
+- Clean, modular architecture following MVC pattern
+- Comprehensive error handling and validation
+- RESTful API design
+- Scalable codebase structure
+
+## Technology Stack
+
+### Backend
+- **Runtime:** Node.js
+- **Framework:** Express.js
+- **Database:** MongoDB (local instance)
+- **ODM:** Mongoose
+- **Authentication:** JWT (JSON Web Tokens)
+- **Password Hashing:** bcrypt
+
+### Architecture
+- **Pattern:** MVC (Model-View-Controller)
+- **Structure:** Modular architecture with separated concerns
+- **Middleware:** Authentication and authorization middleware
+- **Error Handling:** Centralized error handling system
+
+### Security
 - Password hashing with bcrypt
 - JWT token-based authentication
-- Role-based access control
+- Role-based access control (RBAC)
 - Input validation and sanitization
+- Protected API routes
 
-### Database Design:
-- User and Resource collections with proper relationships
-- Embedded ratings array in Resource model
-- References for bookmarks and likes
-
-## Next Steps (Frontend)
+## Frontend (Planned)
 
 The frontend will be built using:
 - React with functional components and hooks
@@ -199,7 +227,16 @@ The frontend will be built using:
 - Dark mode support
 - Responsive design
 
+## Project Status
+
+- Backend: Complete
+- Frontend: In Development
+
+## License
+
+This project is part of a learning resource management system.
+
 ---
 
-**Status:** Backend Complete | Frontend Pending
+**Built with:** MERN Stack (MongoDB, Express.js, React, Node.js)
 
