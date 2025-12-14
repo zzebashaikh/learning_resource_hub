@@ -1,0 +1,42 @@
+/* Confirmation Modal Styles */
+
+.confirmation-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.confirmation-message {
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.confirmation-cancel,
+.confirmation-confirm {
+  min-width: 100px;
+  padding: 10px 20px;
+}
+
+.confirmation-confirm {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .confirmation-actions {
+    flex-direction: column;
+  }
+
+  .confirmation-cancel,
+  .confirmation-confirm {
+    width: 100%;
+  }
+}

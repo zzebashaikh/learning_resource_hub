@@ -1,0 +1,174 @@
+.resource-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+.resource-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 10px;
+}
+
+.resource-header h3 {
+  color: var(--text-primary);
+  margin: 0;
+  flex: 1;
+}
+
+.resource-category {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.resource-description {
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.resource-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.resource-stats {
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  align-items: center;
+}
+
+.resource-stats span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.resource-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.resource-link:hover {
+  color: var(--primary-hover);
+}
+
+.resource-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+.action-btn {
+  padding: 8px 15px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.action-btn:hover {
+  background-color: var(--bg-secondary);
+}
+
+.action-btn.liked {
+  background-color: var(--danger-color);
+  color: white;
+  border-color: var(--danger-color);
+}
+
+.action-btn.bookmarked {
+  background-color: var(--warning-color);
+  color: var(--text-primary);
+}
+
+.rating-section {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+}
+
+.star-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.star-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Star icon colors - applied via className on Star component */
+.star-filled {
+  color: var(--star-filled) !important;
+  fill: var(--star-filled) !important;
+}
+
+.star-empty {
+  color: var(--star-empty) !important;
+  fill: none !important;
+}
+
+/* Rating display in stats */
+.rating-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.resource-owner-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+  .resource-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .resource-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rating-section {
+    margin-left: 0;
+  }
+}
+
