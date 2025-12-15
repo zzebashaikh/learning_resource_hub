@@ -8,12 +8,16 @@
 
 import axios from 'axios';
 
-// Base URL for API (uses proxy in package.json for development)
-const API_URL = process.env.REACT_APP_API_URL || '/api';
+// Log error if VITE_API_URL is not defined
+if (!import.meta.env.VITE_API_URL) {
+  console.error(
+    'VITE_API_URL is not defined. Please set VITE_API_URL environment variable.'
+  );
+}
 
 // Create axios instance with default config
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -119,4 +123,3 @@ export const userAPI = {
 };
 
 export default api;
-
