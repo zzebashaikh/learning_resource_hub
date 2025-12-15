@@ -30,8 +30,11 @@ const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
+    console.log('POST /api/auth/register - Registration attempt:', { email, name: name?.substring(0, 10) + '...' });
+
     // Validate input
     if (!name || !email || !password) {
+      console.log('Registration failed: Missing required fields');
       return res.status(400).json({
         success: false,
         message: 'Please provide name, email, and password',
@@ -41,6 +44,7 @@ const register = async (req, res) => {
     // Check if user already exists
     const userExists = await User.findOne({ email });
     if (userExists) {
+      console.log('Registration failed: User already exists with email:', email);
       return res.status(400).json({
         success: false,
         message: 'User already exists with this email',
@@ -59,6 +63,7 @@ const register = async (req, res) => {
      * 
      * Password will be hashed by pre-save middleware using bcrypt
      */
+    console.log('Creating new user in MongoDB...');
     const user = await User.create({
       name,
       email,
@@ -66,10 +71,13 @@ const register = async (req, res) => {
       role: 'learner', // Explicitly set role to 'learner' (security best practice)
     });
 
+    console.log('User created successfully in MongoDB:', { id: user._id, email: user.email, role: user.role });
+
     // Generate JWT token
     const token = generateToken(user._id);
 
     // Send response with user data and token
+    console.log('Registration successful, returning response');
     res.status(201).json({
       success: true,
       message: 'User registered successfully',
@@ -84,7 +92,8 @@ const register = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error('Registration error:', error);
+    console.error('Registration error:', error.message);
+    console.error('Full error:', error);
     res.status(500).json({
       success: false,
       message: error.message || 'Error registering user',
@@ -101,8 +110,11 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    console.log('POST /api/auth/login - Login attempt:', { email });
+
     // Validate input
     if (!email || !password) {
+      console.log('Login failed: Missing email or password');
       return res.status(400).json({
         success: false,
         message: 'Please provide email and password',
@@ -113,6 +125,7 @@ const login = async (req, res) => {
     const user = await User.findOne({ email }).select('+password');
 
     if (!user) {
+      console.log('Login failed: User not found with email:', email);
       return res.status(401).json({
         success: false,
         message: 'Invalid credentials',
@@ -123,11 +136,14 @@ const login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
+      console.log('Login failed: Password mismatch for email:', email);
       return res.status(401).json({
         success: false,
         message: 'Invalid credentials',
       });
     }
+
+    console.log('Login successful for user:', { id: user._id, email: user.email, role: user.role });
 
     // Generate JWT token
     const token = generateToken(user._id);
@@ -147,7 +163,8 @@ const login = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error('Login error:', error);
+    console.error('Login error:', error.message);
+    console.error('Full error:', error);
     res.status(500).json({
       success: false,
       message: error.message || 'Error logging in',

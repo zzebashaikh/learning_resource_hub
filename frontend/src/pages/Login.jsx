@@ -68,7 +68,9 @@ const Login = () => {
         navigate('/dashboard'); // Learner dashboard (default for all new registrations)
       }
     } catch (err) {
-      setError(err.message || 'Login failed. Please check your credentials.');
+      console.error('Login error:', err);
+      const errorMessage = err.message || err.response?.data?.message || 'Login failed. Please check your credentials.';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

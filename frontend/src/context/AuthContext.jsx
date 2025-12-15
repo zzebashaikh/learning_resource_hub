@@ -81,7 +81,11 @@ export const AuthProvider = ({ children }) => {
 
       return response.data;
     } catch (error) {
-      throw error.response?.data || error;
+      // Extract error message from backend response
+      const errorMessage = error.response?.data?.message || error.message || 'Registration failed';
+      const errorToThrow = new Error(errorMessage);
+      errorToThrow.response = error.response;
+      throw errorToThrow;
     }
   };
 
@@ -123,7 +127,11 @@ export const AuthProvider = ({ children }) => {
         }
       };
     } catch (error) {
-      throw error.response?.data || error;
+      // Extract error message from backend response
+      const errorMessage = error.response?.data?.message || error.message || 'Login failed';
+      const errorToThrow = new Error(errorMessage);
+      errorToThrow.response = error.response;
+      throw errorToThrow;
     }
   };
 

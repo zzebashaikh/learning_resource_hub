@@ -75,7 +75,9 @@ const Register = () => {
       // New users are always learners, redirect to learner dashboard
       navigate('/dashboard');
     } catch (err) {
-      setError(err.message || 'Registration failed. Please try again.');
+      console.error('Registration error:', err);
+      const errorMessage = err.message || err.response?.data?.message || 'Registration failed. Please try again.';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

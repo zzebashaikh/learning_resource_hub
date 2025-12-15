@@ -8,16 +8,13 @@
 
 import axios from 'axios';
 
-// Log error if VITE_API_URL is not defined
-if (!import.meta.env.VITE_API_URL) {
-  console.error(
-    'VITE_API_URL is not defined. Please set VITE_API_URL environment variable.'
-  );
-}
+// API base URL for local development
+// Backend runs on http://localhost:5001
+const API_BASE_URL = 'http://localhost:5001/api';
 
 // Create axios instance with default config
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
